@@ -56,8 +56,10 @@ class IncomesController < ApplicationController
   def destroy
     @income = Income.find(params[:id])
     @income.destroy
-    @income.save
-      redirect_to incomes_url
+    respond_to do |format|
+      format.html { redirect_to expenses_url, notice: 'Income was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
