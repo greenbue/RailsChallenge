@@ -54,10 +54,9 @@ class IncomesController < ApplicationController
   # DELETE /incomes/1
   # DELETE /incomes/1.json
   def destroy
-    @income = Income.find(params[:id])
     @income.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'Income was successfully destroyed.' }
+      format.html { redirect_to incomes_url, notice: 'Income was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +69,6 @@ class IncomesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def income_params
-      params.require(:income).permit(:income_source, :amount)
+      params.require(:income).permit(:user_id, :income_source, :amount)
     end
 end

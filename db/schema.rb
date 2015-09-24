@@ -11,9 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924115902) do
+ActiveRecord::Schema.define(version: 20150924132824) do
 
   create_table "expenses", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "expense_source"
     t.string   "expense_type"
     t.decimal  "amount"
@@ -22,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150924115902) do
   end
 
   create_table "incomes", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "income_source"
     t.decimal  "amount"
     t.datetime "created_at",    null: false
