@@ -21,10 +21,17 @@
     <div class="col-md-6">
       <div class="well">
         This should display the total income of a user
+        <div id="incomes">
+          
+        </div>
       </div>
     </div>
     <div class="col-md-6">
         <%= form_for([@users, Income.new]) do |f| %>
+            <div class="field">
+              <%= f.label :user_id %><br>
+              <%= f.number_field :user_id, :disabled => true, :value => @user.id%>
+            </div>
             <div class="field">
               <%= f.label :income_source %><br>
               <%= f.text_field :income_source %>
@@ -51,6 +58,10 @@
     </div>
     <div class="col-md-6">
       <%= form_for([@users, Expense.new]) do |f| %>
+          <div class="field">
+            <%= f.label :user_id %><br>
+            <%= f.number_field :user_id, :disabled => true, :value => @user.id%>
+          </div>
           <div class="field">
             <%= f.label :expense_source %><br>
             <%= f.text_field :expense_source %>

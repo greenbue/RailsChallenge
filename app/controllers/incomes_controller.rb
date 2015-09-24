@@ -10,6 +10,7 @@ class IncomesController < ApplicationController
   # GET /incomes/1
   # GET /incomes/1.json
   def show
+    @income = current_user.incomes.find(params[:id]);
   end
 
   # GET /incomes/new
