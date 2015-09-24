@@ -1,0 +1,97 @@
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <h2>Welcome back <%= @user.Name %></h2>
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong>Age:</strong>
+          <%= @user.Age %>
+        </p>
+
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+        <%= link_to 'Back', users_path %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Incomes</h2>
+    <div class="col-md-6">
+      <div class="well">
+        This should display the total income of a user
+      </div>
+    </div>
+    <div class="col-md-6">
+        <%= form_for([@users, Income.new]) do |f| %>
+            <div class="field">
+              <%= f.label :income_source %><br>
+              <%= f.text_field :income_source %>
+            </div>
+            <div class="field">
+              <%= f.label :amount %><br>
+              <%= f.text_field :amount %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Expenses</h2>
+    <div class="col-md-6">
+      <div class="well">
+        This should display the total expenses of a user
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= form_for([@users, Expense.new]) do |f| %>
+          <div class="field">
+            <%= f.label :expense_source %><br>
+            <%= f.text_field :expense_source %>
+          </div>
+          <div class="field">
+            <%= f.label :expense_type %><br>
+            <%= f.text_field :expense_type %>
+          </div>
+          <div class="field">
+            <%= f.label :amount %><br>
+            <%= f.text_field :amount %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+      <% end %>
+    </div>
+
+
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Money Left Over</h2>
+    <div class="col-md-6">
+      <div class="well">
+        This should display the total money left over of a user
+      </div>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+
+
+
+  </div>
+</div>

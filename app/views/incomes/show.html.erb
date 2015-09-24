@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong>Income source:</strong>
+          <%= @income.income_source %>
+        </p>
+
+        <p>
+          <strong>Amount:</strong>
+          <%= @income.amount %>
+        </p>
+
+        <%= link_to 'Edit', edit_income_path(@income) %> |
+        <%= link_to 'Back', incomes_path %>
+      </div>
+  </div>
+</div>
