@@ -1,5 +1,6 @@
 <% totalIncome = 0 %>
 <% totalExpense = 0 %>
+<% netIncome = 0 %>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -46,7 +47,7 @@
             <% end %>
             </tbody>
           </table>
-          Your total Income is: <%= totalIncome %>
+          Your total Income is $<%= totalIncome %>
         </div>
       </div>
     </div>
@@ -54,7 +55,7 @@
         <%= form_for([@users, Income.new]) do |f| %>
             <div class="field">
               <%= f.label :user_id %><br>
-              <%= f.number_field :user_id, :readonly => true, :value => @user.id%>
+              <%= f.text_field :user_id, :readonly => true, :value => @user.id%>
             </div>
             <div class="field">
               <%= f.label :income_source %><br>
@@ -100,9 +101,10 @@
                 </tr>
                 <% totalExpense += expense.amount %>
             <% end %>
+            <% netIncome += totalIncome - totalExpense %>
             </tbody>
           </table>
-          Your total Expense is: <%= totalExpense %>
+          Your total Expense is $<%= totalExpense %>
         </div>
       </div>
     </div>
@@ -110,7 +112,7 @@
       <%= form_for([@users, Expense.new]) do |f| %>
           <div class="field">
             <%= f.label :user_id %><br>
-            <%= f.number_field :user_id, :readonly => true, :value => @user.id%>
+            <%= f.text_field :user_id, :readonly => true, :value => @user.id%>
           </div>
           <div class="field">
             <%= f.label :expense_source %><br>
@@ -140,7 +142,7 @@
     <h2>Money Left Over</h2>
     <div class="col-md-6">
       <div class="well">
-        This should display the total money left over of a user
+        Your net income is $<%= netIncome %>
       </div>
     </div>
     <div class="col-md-6">
