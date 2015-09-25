@@ -22,7 +22,6 @@
                   <td><%= income.user_id %></td>
                   <td><%= income.income_source %></td>
                   <td><%= income.amount %></td>
-                  <td><%= link_to 'Show Details', income,:class=> "btn btn-default btn-xs" %></td>
                   <td><%= link_to 'Edit Details', edit_income_path(income), :class=> "btn btn-info btn-xs" %></td>
                   <td><%= link_to 'Remove Income', income, method: :delete, data: { confirm: 'Are you sure?' }, :style=>"color:#fff;", :class=> "btn btn-danger btn-xs" %></td>
                 </tr>
