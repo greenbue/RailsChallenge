@@ -1,12 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-        <p id="notice"><%= notice %></p>
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12  padding">
+          <p id="notice"><%= notice %></p>
 
-        <h1>Listing Expenses</h1>
+          <h1 class = "padding">Listing Expenses</h1>
 
-        <table class="table table-hover  table-condensed">
-          <thead>
+          <table class="table table-hover  table-condensed">
+            <thead>
             <tr>
               <th>User</th>
               <th>Expense source</th>
@@ -14,26 +15,28 @@
               <th>Amount</th>
               <th colspan="3"></th>
             </tr>
-          </thead>
+            </thead>
 
-          <tbody>
+            <tbody>
             <% @expenses.each do |expense| %>
-              <tr>
-                <td><%= expense.user_id %></td>
-                <td><%= expense.expense_source %></td>
-                <td><%= expense.expense_type %></td>
-                <td><%= expense.amount %></td>
-                <td><%= link_to 'Show', expense %></td>
-                <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-                <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
+                <tr>
+                  <td><%= expense.user_id %></td>
+                  <td><%= expense.expense_source %></td>
+                  <td><%= expense.expense_type %></td>
+                  <td><%= expense.amount %></td>
+                  <td><%= link_to 'Show', expense %></td>
+                  <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+                  <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
             <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
 
-        <br>
+          <br>
 
-        <%= link_to 'New Expense', new_expense_path %>
+          <%= link_to 'New Expense', new_expense_path %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+</body>
+

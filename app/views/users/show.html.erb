@@ -1,3 +1,5 @@
+<% totalIncome = 0 %>
+<% totalExpense = 0 %>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -20,9 +22,31 @@
     <h2>Incomes</h2>
     <div class="col-md-6">
       <div class="well">
-        This should display the total income of a user
         <div id="incomes">
-          
+
+          <table class = "table table-condensed">
+            <thead>
+            <tr>
+              <th>Income Source</th>
+              <th>Amount</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <% @user.incomes.each do |income| %>
+                <tr>
+                  <td><%= h(income.income_source) %></td>
+                  <td><%= h(income.amount)%></td>
+                  <td><%= link_to 'Edit', edit_income_path(income) %></td>
+                  <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                <% totalIncome += income.amount %>
+            <% end %>
+            </tbody>
+          </table>
+          Your total Income is: <%= totalIncome %>
         </div>
       </div>
     </div>
@@ -30,7 +54,7 @@
         <%= form_for([@users, Income.new]) do |f| %>
             <div class="field">
               <%= f.label :user_id %><br>
-              <%= f.number_field :user_id, :disabled => true, :value => @user.id%>
+              <%= f.number_field :user_id, :readonly => true, :value => @user.id%>
             </div>
             <div class="field">
               <%= f.label :income_source %><br>
@@ -53,14 +77,40 @@
     <h2>Expenses</h2>
     <div class="col-md-6">
       <div class="well">
-        This should display the total expenses of a user
+        <div id="incomes">
+
+          <table class = "table table-condensed">
+            <thead>
+            <tr>
+              <th>Expense Source</th>
+              <th>Expense Type</th>
+              <th>Amount</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @user.expenses.each do |expense| %>
+                <tr>
+                  <td><%= h(expense.expense_source) %></td>
+                  <td><%= h(expense.expense_type) %></td>
+                  <td><%= h(expense.amount)%></td>
+                  <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+                  <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                <% totalExpense += expense.amount %>
+            <% end %>
+            </tbody>
+          </table>
+          Your total Expense is: <%= totalExpense %>
+        </div>
       </div>
     </div>
     <div class="col-md-6">
       <%= form_for([@users, Expense.new]) do |f| %>
           <div class="field">
             <%= f.label :user_id %><br>
-            <%= f.number_field :user_id, :disabled => true, :value => @user.id%>
+            <%= f.number_field :user_id, :readonly => true, :value => @user.id%>
           </div>
           <div class="field">
             <%= f.label :expense_source %><br>
