@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version - 2.0.0p647
+* Database - SQLite
+* Bootstrap
+* D3.js Library
 
-Things you may want to cover:
+This a basic household budgeting app/system that can cover the following:
 
-* Ruby version
+- multiple incomes
+- multiple expenses
+- categorising the expenses
+- saving a budget (it saves the budget into an sqlite database)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
