@@ -54,15 +54,12 @@
     </div>
     <div class="col-md-6">
         <%= form_for([@users, Income.new]) do |f| %>
-            <div class="field">
-              <%= f.label :user_id %><br>
-              <%= f.text_field :user_id, :readonly => true, :value => @user.id%>
-            </div>
-            <div class="field">
+            <%= f.hidden_field :user_id, :readonly => true, :value => @user.id%>
+            <div class="field income">
               <%= f.label :income_source %><br>
               <%= f.text_field :income_source %>
             </div>
-            <div class="field">
+            <div class="field amount">
               <%= f.label :amount %><br>
               <%= f.text_field :amount %>
             </div>
@@ -98,7 +95,9 @@
                   <td><%= h(expense.expense_type) %></td>
                   <td><%= h(expense.amount)%></td>
                   <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-                  <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td>
+                    <%= link_to "Destroy", expense, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete Expense", class: "btn-delete text-danger" %>
+                  </td>
                 </tr>
                 <% totalExpense += expense.amount %>
             <% end %>
@@ -111,19 +110,16 @@
     </div>
     <div class="col-md-6">
       <%= form_for([@users, Expense.new]) do |f| %>
-          <div class="field">
-            <%= f.label :user_id %><br>
-            <%= f.text_field :user_id, :readonly => true, :value => @user.id%>
-          </div>
-          <div class="field">
+          <%= f.hidden_field :user_id, :readonly => true, :value => @user.id%>
+          <div class="field expense">
             <%= f.label :expense_source %><br>
             <%= f.text_field :expense_source %>
           </div>
-          <div class="field">
+          <div class="field expense-type">
             <%= f.label :expense_type %><br>
             <%= f.text_field :expense_type %>
           </div>
-          <div class="field">
+          <div class="field amount">
             <%= f.label :amount %><br>
             <%= f.text_field :amount %>
           </div>
@@ -132,9 +128,6 @@
           </div>
       <% end %>
     </div>
-
-
-
   </div>
 </div>
 
@@ -147,10 +140,7 @@
       </div>
     </div>
     <div class="col-md-6">
-
     </div>
-
-
-
   </div>
 </div>
+
